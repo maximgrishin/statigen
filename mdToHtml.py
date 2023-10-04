@@ -3,6 +3,8 @@ import subprocess
 import sys
 
 
+currentDirectory = os.path.dirname(__file__)
+
 def readBlocks():
     block = []
     blocks = []
@@ -24,12 +26,12 @@ def escape(text):
 
 
 def runHightlight(text):
-    return subprocess.run(['node', os.path.join('tools', 'runHighlight.js')],
+    return subprocess.run(['node', os.path.join(currentDirectory, 'runHighlight.js')],
         input=text.encode(), capture_output = True).stdout.decode()
 
 
 def runKatex(text):
-    return subprocess.run(['node', os.path.join('tools', 'runKatex.js')],
+    return subprocess.run(['node', os.path.join(currentDirectory, 'runKatex.js')],
         input=text.encode(), capture_output = True).stdout.decode()
 
 
